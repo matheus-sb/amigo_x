@@ -1,0 +1,22 @@
+<div class="col-lg-4 col-md-6">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-xs-3">
+          <i class="fa fa-group fa-3x"></i>
+        </div>
+        <div class="col-xs-9 text-right">
+          <div class="huge"><%= group.name %></div>
+          <div>Número de participantes: <%=group.participants.size %></div>
+        </div>
+      </div>
+    </div>
+    <%= link_to group_path(group) do %>
+      <div class="panel-footer">
+        <span class="pull-left">Mais sobre <%= group.name %></span>
+        <span class="pull-right"><i class="fa fa-ellipsis-v"></i></span>
+        <div class="clearfix"></div>
+      </div>
+    <% end %>
+  </div>
+</div>

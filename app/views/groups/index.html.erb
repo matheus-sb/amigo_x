@@ -1,0 +1,7 @@
+<% content_for :title do %>
+  Grupos
+<% end %>
+
+<div class="row">
+  <%= render partial: 'group_panel', collection: @groups, as: :group %>
+</div>

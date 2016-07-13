@@ -1,0 +1,23 @@
+<li>
+    <a href="#"><i class="fa fa-group fa-fw"></i> <%= group_menu.name %><span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+        <li>
+            <%= link_to 'Informações', group_path(group_menu) %>
+        </li>
+        <li>
+            <a href="/teste">Mensagens</a>
+        </li>                                
+        <li>
+            <% if group_menu.raffled? %>
+              <%= link_to 'Meu amigo', raffle_group_path(group_menu) %>
+            <% elsif group_menu.user == current_user %>
+              <%= link_to 'Sortear', raffle_group_path(group_menu) %>   
+            <% end %>         
+        </li>                                
+        <li>
+            <% if group_menu.user == current_user %>
+                <%= link_to 'Configurações do grupo', edit_group_path(group_menu) %>
+            <% end %>
+        </li>
+    </ul>
+</li>

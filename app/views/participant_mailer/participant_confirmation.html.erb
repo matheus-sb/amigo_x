@@ -1,0 +1,15 @@
+<h1>Oi, tudo bem?<h1>
+
+<a>
+	O seu amigo adicionou você para participar do amigo secreto do grupo <%= @participant.group.name %>
+</a>
+<br>
+<a>
+	Por favor, confirme sua participação acessando o link: <%= confirm_participant_url(@participant.confirm_token)%>
+</a>	
+<a>
+	P.S. Se você já tem conta, basta acessar e sua presença será confirmada. Já se não tiver uma, basta cadastrar!
+	Em ambos os casos, use este email: <%= @participant.email%> acessando pelo o link acima
+<a>
+
+Obrigado!
