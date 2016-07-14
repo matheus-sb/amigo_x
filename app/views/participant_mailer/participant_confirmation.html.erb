@@ -1,15 +1,13 @@
-<h1>Oi, tudo bem?<h1>
+<p>Olá, tudo bem?</p>
 
-<a>
-	O seu amigo adicionou você para participar do amigo secreto do grupo <%= @participant.group.name %>
-</a>
-<br>
-<a>
-	Por favor, confirme sua participação acessando o link: <%= confirm_participant_url(@participant.confirm_token)%>
-</a>	
-<a>
-	P.S. Se você já tem conta, basta acessar e sua presença será confirmada. Já se não tiver uma, basta cadastrar!
-	Em ambos os casos, use este email: <%= @participant.email%> acessando pelo o link acima
-<a>
+<p>O seu amigo adicionou você para participar do amigo secreto do grupo <%= @participant.group.name %></p>
 
-Obrigado!
+<p>Por favor, confirme a sua participação clicando no link: <%= link_to 'Confirmar minha participação', confirm_participant_url(@participant.confirm_token) %></p>
+
+<p>
+	P.S. Se você já tem uma conta com o e-mail <%= @participant.email%>, basta acessar e sua presença será confirmada. 
+	Já se não tiver uma, basta cadastrar utilizando este e-mail!
+</p>
+
+<p>Obrigado!</p>
+<p>Equipe Amigo X</p>

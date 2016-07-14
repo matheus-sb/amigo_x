@@ -40,9 +40,7 @@ class ParticipantsController < ApplicationController
     def set_group
       @group = Group.find(params[:group_id])
 
-      if @group.blank?
-        redirect_to groups_url
-      end
+      redirect_to groups_url if @group.blank?
     end
 
     # Use callbacks to share common setup or constraints between actions.

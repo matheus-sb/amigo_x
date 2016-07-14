@@ -5,19 +5,17 @@
             <%= link_to 'Informações', group_path(group_menu) %>
         </li>
         <li>
-            <a href="/teste">Mensagens</a>
+            <%= link_to 'Mensagens', messages_group_path(group_menu) %>
         </li>                                
         <li>
             <% if group_menu.raffled? %>
-              <%= link_to 'Meu amigo', raffle_group_path(group_menu) %>
+              <%= link_to 'Meu amigo', secret_friend_group_path(group_menu) %>
             <% elsif group_menu.user == current_user %>
               <%= link_to 'Sortear', raffle_group_path(group_menu) %>   
             <% end %>         
         </li>                                
         <li>
-            <% if group_menu.user == current_user %>
-                <%= link_to 'Configurações do grupo', edit_group_path(group_menu) %>
-            <% end %>
+            <%= link_to 'Configurações do grupo', edit_group_path(group_menu) if group_menu.user == current_user %>
         </li>
     </ul>
 </li>

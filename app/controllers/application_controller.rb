@@ -5,12 +5,4 @@ class ApplicationController < ActionController::Base
   def groups_by_user
   	Group.joins(:participants).distinct.where('participants.user_id = ?', current_user.id)
   end
-
-  # before_action :load_sidebar
-
- #  def load_sidebar 
- #  	unless !user_signed_in?
-	#   @Groups_side_bar = Group.all
-	# end
- #  end
 end

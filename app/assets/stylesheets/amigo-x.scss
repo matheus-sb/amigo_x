@@ -298,7 +298,7 @@ table.dataTable thead .sorting:after {
 }
 
 .huge {
-    font-size: 35px;
+    font-size: 30px;
 }
 
 .panel-green {
@@ -357,4 +357,17 @@ table.dataTable thead .sorting:after {
 
 .title-menu {
     padding-left: 15px;
+}
+
+.auth-h2 {
+    font-weight: 800; 
+    color:#337ab7; 
+    margin-top:10%; 
+    font-size:35px;
+}
+
+.auth-sub-title {
+    text-align: center; 
+    color:#337ab7; 
+    font-size: 27px!important;    
 }

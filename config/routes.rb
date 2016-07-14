@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'welcome/index'
 
-  # get '/groups/:id/raffle', :to => 'groups#raffle', :as => :raffle_group
   resources :groups do 
     member do
       get 'raffle'
+      get 'secret_friend'
+      get 'messages'
     end
     resources :participants, only: [:create, :destroy, :show]
   end
@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     root 'groups#index', as: "authenticated_root"
   end
 
-  root 'welcome#index'
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
