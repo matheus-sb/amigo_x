@@ -5,6 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :groups 
+  has_many :messages, dependent: :destroy
   has_many :user_participants, class_name: 'Participant', foreign_key: 'user_id', dependent: :nullify
   has_many :sec_user_participants, class_name: 'Participant', foreign_key: 'sec_user_id', dependent: :nullify
+
+	def name
+	  email.split('@')[0]
+	end  
 end

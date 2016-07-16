@@ -1,6 +1,7 @@
 class Group < ApplicationRecord
 	belongs_to :user
-	has_many :participants
+	has_many :participants, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   def raffle
   	raise 'Este grupo já foi sorteado!' if raffled

@@ -70,4 +70,6 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }  
+
+Rails.application.config.action_cable.disable_request_forgery_protection = true                                            
 end

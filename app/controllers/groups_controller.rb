@@ -26,6 +26,7 @@ class GroupsController < ApplicationController
   # POST /groups
   def create
     @group = current_user.groups.build(group_params)
+    # @group.build_chat_room
     participant = @group.participants.build(email: current_user.email)
     participant.user = @group.user
     
@@ -64,11 +65,13 @@ class GroupsController < ApplicationController
   def secret_friend
     @participant = Participant.where({group_id: params[:id], user_id: current_user}).take
 
-    redirect_to groups_url if @participant.blank?
+    redirect_to_groups(@participant)
   end
 
   def messages
-    # todo
+    @group = Group.joins(:participants).includes(:messages).where('groups.id = ? AND participants.user_id = ?', params[:id], current_user.id).take
+    redirect_to_groups(@group)
+    @message = Message.new
   end  
 
   private
@@ -76,13 +79,13 @@ class GroupsController < ApplicationController
     def set_group      
       @group = Group.where({id: params[:id], user_id: current_user}).take;
 
-      redirect_to groups_url if @group.blank?
+      redirect_to_groups(@group)
     end
 
     def set_group_show
       @group = Group.joins(:participants).distinct.where('groups.id = ? AND participants.user_id = ?', params[:id], current_user.id).take
 
-      redirect_to groups_url if @group.blank?
+      redirect_to_groups(@group)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -93,6 +96,10 @@ class GroupsController < ApplicationController
     def set_group_with_participants
       @group = Group.includes(:participants).where({id: params[:id], user_id: current_user}).take;
 
-      redirect_to groups_url if @group.blank?
+      redirect_to_groups(@group)
+    end
+
+    def redirect_to_groups(obj)
+      redirect_to groups_url if obj.blank?
     end
 end

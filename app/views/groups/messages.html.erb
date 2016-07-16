@@ -1,3 +1,18 @@
 <% content_for :title do %>
-  Mensagens
+  Mensagens do grupo <%= @group.name %>
+<% end %>
+
+<div id="messages" data-group-id="<%= @group.id %>">
+  <%= render @group.messages %>
+</div>
+
+<%= form_for @message, url: '#' do |f| %>
+  <%= hidden_field_tag 'group_id', @group.id %>
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: 'form-control' %>
+    <small class="text-muted">De 2 a 1000 caracteres</small>
+  </div>
+
+  <%= f.submit "Enviar", class: 'btn btn-primary btn-lg' %>
 <% end %>

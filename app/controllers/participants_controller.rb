@@ -1,7 +1,7 @@
 class ParticipantsController < ApplicationController  
+  before_action :authenticate_user!
   before_action :set_group, only: [:new, :create]
   before_action :set_participant, only: :destroy
-  before_action :authenticate_user!
 
   def show
   end
