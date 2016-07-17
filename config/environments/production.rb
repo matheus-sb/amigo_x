@@ -99,8 +99,6 @@ Rails.application.configure do
   #   enable_starttls_auto: true
   # }  
 
-  ruby ENV['CUSTOM_RUBY_VERSION'] || '2.2.4'
-
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
