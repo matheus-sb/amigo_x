@@ -99,16 +99,18 @@ Rails.application.configure do
   #   enable_starttls_auto: true
   # }  
 
-ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.smtp_settings = {
-  :address              =>  'smtp.sendgrid.net',
-  :port                 =>  '587',
-  :authentication       =>  :plain,
-  :user_name            =>  'app53743971@heroku.com',
-  :password             =>  '5oo35wmm1942',
-  :domain               =>  'heroku.com',
-  :enable_starttls_auto  =>  true
-}  
+  ruby ENV['CUSTOM_RUBY_VERSION'] || '2.2.4'
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address              =>  'smtp.sendgrid.net',
+    :port                 =>  '587',
+    :authentication       =>  :plain,
+    :user_name            =>  'app53743971@heroku.com',
+    :password             =>  '5oo35wmm1942',
+    :domain               =>  'heroku.com',
+    :enable_starttls_auto  =>  true
+  }  
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
