@@ -11,7 +11,7 @@ class ParticipantsController < ApplicationController
 
     respond_to do |format|
       if @participant.save
-        ParticipantMailer.participant_confirmation(@participant).deliver
+        ParticipantMailer.participant_confirmation(@participant).deliver_later
         format.js { render action: 'show', status: :created, location => [@grupo, @participant] }
       else
         format.js { render json: @participant.errors, status: :unprocessable_entity }

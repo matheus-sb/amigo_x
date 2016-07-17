@@ -12,8 +12,11 @@
 
 ActiveRecord::Schema.define(version: 20160715031639) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "groups", force: :cascade do |t|
-    t.string   "name",       null: false
+    t.string   "name"
     t.string   "address"
     t.string   "city"
     t.datetime "created_at", null: false
@@ -22,23 +25,14 @@ ActiveRecord::Schema.define(version: 20160715031639) do
     t.boolean  "raffled"
   end
 
-  create_table "grupos", force: :cascade do |t|
-    t.string   "name"
-    t.string   "address"
-    t.string   "city"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
-  end
-
   create_table "messages", force: :cascade do |t|
     t.text     "body"
     t.integer  "user_id"
     t.integer  "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["group_id"], name: "index_messages_on_group_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
+    t.index ["group_id"], name: "index_messages_on_group_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
   create_table "participants", force: :cascade do |t|
@@ -67,9 +61,11 @@ ActiveRecord::Schema.define(version: 20160715031639) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "messages", "groups"
+  add_foreign_key "messages", "users"
 end

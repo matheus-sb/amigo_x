@@ -9,8 +9,8 @@
 <%= form_for @message, url: '#' do |f| %>
   <%= hidden_field_tag 'group_id', @group.id %>
   <div class="form-group">
-    <%= f.label :body %>
-    <%= f.text_area :body, class: 'form-control' %>
+    <!-- <%= f.label :body %> -->
+    <%= f.text_area :body, class: 'form-control', placeholder: 'Digite aqui sua mensagem'  %>
     <small class="text-muted">De 2 a 1000 caracteres</small>
   </div>
 
