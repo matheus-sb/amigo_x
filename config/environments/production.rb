@@ -80,12 +80,30 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
+  #Needed for devise
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'pure-savannah-99471.herokuapp.com' }
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: 'pure-savannah-99471.herokuapp.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    user_name:     'ma5401132@gmail.com',
+    password:      'testando10',
+    domain:        'pure-savannah-99471.herokuapp.com',
+    address:       'smtp.gmail.com',
+    port:          '587',
+    authentication: :plain,
+    enable_starttls_auto: true
+  }  
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_cable.allowed_request_origins = ['https://your_app.herokuapp.com',
-                                                 'http://your_app.herokuapp.com']  
+  config.action_cable.allowed_request_origins = ['https://pure-savannah-99471.herokuapp.com',
+                                                 'http://pure-savannah-99471.herokuapp.com']  
 
   config.action_cable.url = "wss://sitepoint-actioncable.herokuapp.com/cable"                                                 
 end
