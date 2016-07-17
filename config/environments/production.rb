@@ -81,23 +81,34 @@ Rails.application.configure do
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
   #Needed for devise
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: 'pure-savannah-99471.herokuapp.com' }
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default_url_options = { host: 'pure-savannah-99471.herokuapp.com' }
 
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'pure-savannah-99471.herokuapp.com' }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    user_name:     'ma5401132@gmail.com',
-    password:      'testando10',
-    domain:        'pure-savannah-99471.herokuapp.com',
-    address:       'smtp.gmail.com',
-    port:          '587',
-    authentication: :plain,
-    enable_starttls_auto: true
-  }  
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.default_url_options = { host: 'pure-savannah-99471.herokuapp.com' }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   user_name:     'ma5401132@gmail.com',
+  #   password:      'testando10',
+  #   domain:        'pure-savannah-99471.herokuapp.com',
+  #   address:       'smtp.gmail.com',
+  #   port:          '587',
+  #   authentication: :plain,
+  #   enable_starttls_auto: true
+  # }  
+
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.smtp_settings = {
+  :address              =>  'smtp.sendgrid.net',
+  :port                 =>  '587',
+  :authentication       =>  :plain,
+  :user_name            =>  'app53743971@heroku.com',
+  :password             =>  '5oo35wmm1942',
+  :domain               =>  'heroku.com',
+  :enable_starttls_auto  =>  true
+}  
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
@@ -105,5 +116,5 @@ Rails.application.configure do
   config.action_cable.allowed_request_origins = ['https://pure-savannah-99471.herokuapp.com',
                                                  'http://pure-savannah-99471.herokuapp.com']  
 
-  config.action_cable.url = "wss://sitepoint-actioncable.herokuapp.com/cable"                                                 
+  config.action_cable.url = "wss://pure-savannah-99471.herokuapp.com/cable"                                                 
 end
