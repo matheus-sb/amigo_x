@@ -7,7 +7,8 @@
                 </div>
                 <div class="panel-body">
 					<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, role:"form" }) do |f| %>
-					  <%= devise_error_messages! %>
+                      <% flash.now[:notice] = flash[:notice].to_a.concat resource.errors.full_messages %>
+					  <!-- <%= devise_error_messages! %> -->
 					  <fieldset>
 						  <div class="form-group">
 						    <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "E-mail" %>

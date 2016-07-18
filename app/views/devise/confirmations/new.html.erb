@@ -7,7 +7,7 @@
                 </div>
                 <div class="panel-body">
 					<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-					  <%= devise_error_messages! %>
+					  <% flash.now[:notice] = flash[:notice].to_a.concat resource.errors.full_messages %>
 					  <fieldset>
 						  <div class="form-group">
 						    <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "E-mail", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>

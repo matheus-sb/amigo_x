@@ -3,18 +3,8 @@
       <div class="panel-heading"><h4>Informações do grupo <%= group.name %></h4></div>
       <div class="panel-body">
         <%= form_for group, html: {role:"form"} do |f| %>
-          <% if group.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
-
-              <ul>
-              <% group.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-              </ul>
-            </div>
-          <% end %>
-
+          <% flash.now[:notice] = flash[:notice].to_a.concat group.errors.map { |attr, msg| msg } %>
+          
           <div class="form-group input-group">
             <span class="input-group-addon"><i class="fa fa-group"></i></span>
             <%= f.text_field :name, class: "form-control", placeholder: 'Nome' %>

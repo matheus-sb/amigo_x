@@ -3,6 +3,8 @@ class Group < ApplicationRecord
 	has_many :participants, dependent: :destroy
   has_many :messages, dependent: :destroy
 
+  validates :name, presence: { message: 'O nome deve ser preenchido' }
+
   def raffle
   	raise 'Este grupo já foi sorteado!' if raffled
 
