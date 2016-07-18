@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :user_participants, class_name: 'Participant', foreign_key: 'user_id', dependent: :nullify
   has_many :sec_user_participants, class_name: 'Participant', foreign_key: 'sec_user_id', dependent: :nullify
 
+  validates :username, presence: true
+
 	def name
 	  email.split('@')[0]
 	end  

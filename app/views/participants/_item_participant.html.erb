@@ -1,4 +1,4 @@
-<div class="col-lg-3 col-md-6">
+<div class="col-lg-4 col-md-6">
   <div class="panel panel-primary">
     <div class="panel-heading">
   	  <div class="row">
@@ -6,7 +6,11 @@
 		  <i class="fa fa-user fa-3x"></i>
         </div>
 	    <div class="col-xs-9 text-right">
-  		  <strong><%= participant.email%></strong>
+        <% if participant.user.blank? %>
+          <div><strong><%= participant.email%></strong></div>
+        <% else %>
+          <div><strong><%= participant.user.username %></strong></div>
+        <% end %>
 	    </div>
 	  </div>
     </div>

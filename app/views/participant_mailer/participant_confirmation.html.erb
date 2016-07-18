@@ -1,6 +1,6 @@
 <p>Olá, tudo bem?</p>
 
-<p>O seu amigo adicionou você para participar do amigo secreto do grupo <%= @participant.group.name %></p>
+<p>O seu amigo <%=@participant.group.user.username%> adicionou você para participar do amigo secreto do grupo <%= @participant.group.name %></p>
 
 <p>Por favor, confirme a sua participação clicando no link: <%= link_to 'Confirmar minha participação', confirm_participant_url(@participant.confirm_token) %></p>
 

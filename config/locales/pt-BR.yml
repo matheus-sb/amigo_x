@@ -9,6 +9,7 @@ pt-BR:
         remember_me: Lembre-se de mim
         reset_password_token: 
         unlock_token: 
+        username: Nome
     models:
       user: Usuário
   devise:
